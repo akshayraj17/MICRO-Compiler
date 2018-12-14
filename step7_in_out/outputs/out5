@@ -1,0 +1,99 @@
+;PUSH   
+;PUSHREGS   
+;JSR   main
+;HALT   
+;LABEL func_ main  
+;LINK   0
+;STOREI 0 !T0 
+;STOREI !T0 i 
+;STOREI 0 !T1 
+;STOREI !T1 j 
+;STOREI 0 !T2 
+;STOREI !T2 k 
+;STOREI 0 !T3 
+;STOREI !T3 result 
+;LABEL WHILE_START_1  
+;STOREI 99 !T4 
+;GTI i !T4 WHILE_END_2
+;LABEL WHILE_START_3  
+;STOREI 99 !T5 
+;GTI j !T5 WHILE_END_4
+;LABEL WHILE_START_5  
+;STOREI 100 !T6 
+;GEI k !T6 WHILE_END_6
+;STOREI 1 !T7 
+;ADDI result !T7 !T8
+;STOREI !T8 result 
+;STOREI 1 !T9 
+;ADDI k !T9 !T10
+;STOREI !T10 k 
+;JUMP WHILE_START_5  
+;LABEL WHILE_END_6  
+;STOREI 1 !T11 
+;ADDI j !T11 !T12
+;STOREI !T12 j 
+;JUMP WHILE_START_3  
+;LABEL WHILE_END_4  
+;STOREI 1 !T13 
+;ADDI i !T13 !T14
+;STOREI !T14 i 
+;JUMP WHILE_START_1  
+;LABEL WHILE_END_2  
+;WRITEI result  
+str dummy "abcde"
+var i
+var j
+var k
+var result
+push 
+push r0
+push r1
+push r2
+push r3
+jsr FUNC_main
+sys halt
+label FUNC_main
+link 0
+move 0 r0
+move r0 i
+move 0 r1
+move r1 j
+move 0 r2
+move r2 k
+move 0 r3
+move r3 result
+label  WHILE_START_1
+move 99 r4
+cmpi i r4
+jgt WHILE_END_2
+label  WHILE_START_3
+move 99 r5
+cmpi j r5
+jgt WHILE_END_4
+label  WHILE_START_5
+move 100 r6
+cmpi k r6
+jge WHILE_END_6
+move 1 r7
+move result r8
+addi r7 r8
+move r8 result
+move 1 r9
+move k r10
+addi r9 r10
+move r10 k
+jmp  WHILE_START_5
+label  WHILE_END_6
+move 1 r11
+move j r12
+addi r11 r12
+move r12 j
+jmp  WHILE_START_3
+label  WHILE_END_4
+move 1 r13
+move i r14
+addi r13 r14
+move r14 i
+jmp  WHILE_START_1
+label  WHILE_END_2
+sys writei result  

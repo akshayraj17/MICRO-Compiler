@@ -1,0 +1,20 @@
+PROGRAM factorial2
+BEGIN
+	STRING input := "Please enter an integer number: ";
+	STRING eol := "\n";
+	
+	FUNCTION INT factorial(INT a)
+	BEGIN
+		INT ret;
+		RETURN ret;
+	END
+
+	FUNCTION INT main ()
+	BEGIN
+		INT num;
+		INT result;
+		
+		result := 1;
+		RETURN 0;
+	END
+END

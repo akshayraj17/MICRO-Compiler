@@ -1,0 +1,162 @@
+;LABEL func_   main
+;LINK   
+;WRITES input  
+;READI num  
+;STOREI 1 !T0 
+;NEI num !T0 ELSE_1
+;STOREI 1 !T1 
+;STOREI !T1 result 
+;JUMP END_IF_ELSE2  
+;LABEL ELSE_1  
+;STOREI 1 !T2 
+;LEI num !T2 ELSE_3
+;PUSH   
+;PUSHREGS   
+;JUMP   factorial
+;POP   
+;POPREGS   
+;POP   !T4
+;JUMP END_IF_ELSE4  
+;LABEL ELSE_3  
+;STOREI 0 !T3 
+;STOREI !T3 result 
+;LABEL END_IF_ELSE4  
+;LABEL END_IF_ELSE2  
+;WRITEI result  
+;WRITES eol  
+;STOREI 0 !T4 
+;STOREI !T4 !T5 
+;STOREI  !T5 $RET
+;UNLINK   
+;RET   
+str input "Please enter an integer number: "
+str eol "\n"
+sys writes input  
+sys readi num  
+move 1 r0
+cmpi num r0
+jne ELSE_1
+move 1 r1
+move r1 result
+jump0 
+label1 
+move 1 r2
+cmpi num r2
+jle ELSE_3
+jump2 
+jump3 
+label4 
+move 0 r3
+move r3 result
+label5 
+label6 
+sys writei result  
+sys writes eol  
+move 0 r4
+move r4 r5
+move  r5
+unlnk
+ret
+;LABEL func_   main
+;LINK   
+;WRITES input  
+;READI num  
+;STOREI 1 !T0 
+;NEI num !T0 ELSE_1
+;STOREI 1 !T1 
+;STOREI !T1 result 
+;JUMP END_IF_ELSE2  
+;LABEL ELSE_1  
+;STOREI 1 !T2 
+;LEI num !T2 ELSE_3
+;PUSH   
+;PUSHREGS   
+;JUMP   factorial
+;POP   
+;POPREGS   
+;POP   !T4
+;JUMP END_IF_ELSE4  
+;LABEL ELSE_3  
+;STOREI 0 !T3 
+;STOREI !T3 result 
+;LABEL END_IF_ELSE4  
+;LABEL END_IF_ELSE2  
+;WRITEI result  
+;WRITES eol  
+;STOREI 0 !T4 
+;STOREI !T4 !T5 
+;STOREI  !T5 $RET
+;UNLINK   
+;RET   
+;LABEL func_   factorial
+;LINK   
+;STOREI 1 !T5 
+;NEI a !T5 ELSE_5
+;STOREI 1 !T6 
+;STOREI !T6 !T7 
+;STOREI  !T7 $RET
+;UNLINK   
+;RET   
+;JUMP END_IF_ELSE6  
+;LABEL ELSE_5  
+;PUSH   
+;PUSHREGS   
+;STOREI 1 !T7 
+;SUBI a !T7 !T8
+;JUMP   factorial
+;POP   
+;POPREGS   
+;POP   !T5
+;MULI tret a !T9
+;STOREI !T9 ret 
+;LABEL END_IF_ELSE6  
+;STOREI ret !T10 
+;STOREI  !T10 $RET
+;UNLINK   
+;RET   
+str input "Please enter an integer number: "
+str eol "\n"
+sys writes input  
+sys readi num  
+move 1 r0
+cmpi num r0
+jne ELSE_1
+move 1 r1
+move r1 result
+jump7 
+label8 
+move 1 r2
+cmpi num r2
+jle ELSE_3
+jump9 
+jump10 
+label11 
+move 0 r3
+move r3 result
+label12 
+label13 
+sys writei result  
+sys writes eol  
+move 0 r4
+move r4 r5
+move  r5
+move 1 r5
+cmpi a r5
+jne ELSE_5
+move 1 r6
+move r6 r7
+move  r7
+jump14 
+label15 
+move 1 r7
+move a r8
+subi r7 r8
+jump16 
+move tret r9
+muli a r9
+move r9 ret
+label17 
+move ret r10
+move  r10
+unlnk
+ret

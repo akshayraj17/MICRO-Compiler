@@ -1,0 +1,78 @@
+;PUSH   
+;PUSHREGS   
+;JSR   main
+;HALT   
+;LABEL func_ main  
+;LINK   0
+;STOREI 17 !T0 
+;STOREI !T0 i 
+;STOREI 0 !T1 
+;STOREI !T1 j 
+;STOREI 0 !T2 
+;STOREI !T2 k 
+;LABEL WHILE_START_1  
+;STOREI j !T3 
+;GEI i !T3 WHILE_END_2
+;WRITES guess  
+;READI j  
+;STOREI j !T4 
+;GEI i !T4 ELSE_3
+;WRITES correct  
+;JUMP END_IF_ELSE4  
+;LABEL ELSE_3  
+;WRITES wrong  
+;LABEL END_IF_ELSE4  
+;STOREI 1 !T5 
+;ADDI k !T5 !T6
+;STOREI !T6 k 
+;JUMP WHILE_START_1  
+;LABEL WHILE_END_2  
+;WRITES out1  
+;WRITEI k  
+;WRITES out2  
+str guess "Guess a number: "
+str correct "Correct!\n"
+str wrong "Wrong!\n"
+str out1 "It took you "
+str out2 " guesses"
+var i
+var j
+var k
+push 
+push r0
+push r1
+push r2
+push r3
+jsr FUNC_main
+sys halt
+label FUNC_main
+link 0
+move 17 r0
+move r0 i
+move 0 r1
+move r1 j
+move 0 r2
+move r2 k
+label  WHILE_START_1
+move j r3
+cmpi i r3
+jge WHILE_END_2
+sys writes guess  
+sys readi j  
+move j r4
+cmpi i r4
+jge ELSE_3
+sys writes correct  
+jmp  END_IF_ELSE4
+label  ELSE_3
+sys writes wrong  
+label  END_IF_ELSE4
+move 1 r5
+move k r6
+addi r5 r6
+move r6 k
+jmp  WHILE_START_1
+label  WHILE_END_2
+sys writes out1  
+sys writei k  
+sys writes out2  

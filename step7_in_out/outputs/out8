@@ -1,0 +1,144 @@
+;PUSH   
+;PUSHREGS   
+;JSR   main
+;HALT   
+;LABEL func_ main  
+;LINK   0
+;READI a  
+;READI b  
+;LABEL WHILE_START_1  
+;STOREI 120 !T0 
+;STOREI !T0 !T0 
+;GEI a !T0 WHILE_END_2
+;STOREI 1 !T2 
+;STOREI !T2 !T2 
+;GEI b !T2 ELSE_3
+;STOREI 1 !T4 
+;MULI !T4 a !T5
+;STOREI !T5 g 
+;WRITEI g  
+;JUMP END_IF_ELSE4  
+;LABEL ELSE_3  
+;STOREI 2 !T6 
+;STOREI !T6 !T6 
+;GEI b !T6 ELSE_5
+;STOREI 2 !T8 
+;MULI !T8 a !T9
+;STOREI !T9 p 
+;WRITEI p  
+;JUMP END_IF_ELSE6  
+;LABEL ELSE_5  
+;STOREI 3 !T10 
+;STOREI !T10 !T10 
+;GEI b !T10 ELSE_7
+;STOREI 3 !T12 
+;MULI !T12 a !T13
+;STOREI !T13 k 
+;WRITEI k  
+;JUMP END_IF_ELSE8  
+;LABEL ELSE_7  
+;STOREI 4 !T14 
+;STOREI !T14 !T14 
+;GEI b !T14 ELSE_9
+;STOREI 4 !T16 
+;MULI !T16 a !T17
+;STOREI !T17 u 
+;WRITEI u  
+;JUMP END_IF_ELSE10  
+;LABEL ELSE_9  
+;LABEL END_IF_ELSE10  
+;LABEL END_IF_ELSE8  
+;LABEL END_IF_ELSE6  
+;LABEL END_IF_ELSE4  
+;STOREI 1 !T18 
+;ADDI b !T18 !T19
+;STOREI !T19 b 
+;STOREI 2 !T20 
+;ADDI a !T20 !T21
+;STOREI !T21 a 
+;JUMP WHILE_START_1  
+;LABEL WHILE_END_2  
+;WRITEI a  
+;WRITEI b  
+var a
+var b
+var k
+var g
+var p
+var u
+push 
+push r0
+push r1
+push r2
+push r3
+jsr FUNC_main
+sys halt
+label FUNC_main
+link 0
+sys readi a  
+sys readi b  
+label  WHILE_START_1
+move 120 r0
+move r0 r0
+cmpi a r0
+jge WHILE_END_2
+move 1 r2
+move r2 r2
+cmpi b r2
+jge ELSE_3
+move 1 r4
+move r4 r5
+muli a r5
+move r5 g
+sys writei g  
+jmp  END_IF_ELSE4
+label  ELSE_3
+move 2 r6
+move r6 r6
+cmpi b r6
+jge ELSE_5
+move 2 r8
+move r8 r9
+muli a r9
+move r9 p
+sys writei p  
+jmp  END_IF_ELSE6
+label  ELSE_5
+move 3 r10
+move r10 r10
+cmpi b r10
+jge ELSE_7
+move 3 r12
+move r12 r13
+muli a r13
+move r13 k
+sys writei k  
+jmp  END_IF_ELSE8
+label  ELSE_7
+move 4 r14
+move r14 r14
+cmpi b r14
+jge ELSE_9
+move 4 r16
+move r16 r17
+muli a r17
+move r17 u
+sys writei u  
+jmp  END_IF_ELSE10
+label  ELSE_9
+label  END_IF_ELSE10
+label  END_IF_ELSE8
+label  END_IF_ELSE6
+label  END_IF_ELSE4
+move 1 r18
+move b r19
+addi r18 r19
+move r19 b
+move 2 r20
+move a r21
+addi r20 r21
+move r21 a
+jmp  WHILE_START_1
+label  WHILE_END_2
+sys writei a  
+sys writei b  

@@ -1,0 +1,148 @@
+;PUSH   
+;PUSHREGS   
+;JSR   main
+;HALT   
+;LABEL func_ main  
+;LINK   0
+;STOREF 0.001 !T0 
+;STOREF !T0 error 
+;READF x1  
+;READF n  
+;MULF x1 x1 !T1
+;SUBF !T1 n !T2
+;STOREF !T2 fx 
+;STOREF 2.0 !T3 
+;MULF !T3 x1 !T4
+;STOREF !T4 dfx 
+;DIVF fx dfx !T5
+;SUBF x1 !T5 !T6
+;STOREF !T6 x2 
+;STOREI 0 !T7 
+;STOREI !T7 i 
+;LABEL WHILE_START_1  
+;STOREI 2 !T8 
+;STOREI !T8 !T8 
+;GEI i !T8 WHILE_END_2
+;STOREF x2 !T10 
+;STOREF !T10 x1 
+;MULF x1 x1 !T11
+;SUBF !T11 n !T12
+;STOREF !T12 fx 
+;STOREF 2.0 !T13 
+;MULF !T13 x1 !T14
+;STOREF !T14 dfx 
+;DIVF fx dfx !T15
+;SUBF x1 !T15 !T16
+;STOREF !T16 x2 
+;STOREI 1 !T17 
+;ADDI i !T17 !T18
+;STOREI !T18 i 
+;JUMP WHILE_START_1  
+;LABEL WHILE_END_2  
+;LABEL WHILE_START_3  
+;SUBF x1 x2 !T19
+;STOREI error !T19 
+;GEI !T19 !T19 WHILE_END_4
+;STOREF x2 !T21 
+;STOREF !T21 x1 
+;MULF x1 x1 !T22
+;SUBF !T22 n !T23
+;STOREF !T23 fx 
+;STOREF 2.0 !T24 
+;MULF !T24 x1 !T25
+;STOREF !T25 dfx 
+;DIVF fx dfx !T26
+;SUBF x1 !T26 !T27
+;STOREF !T27 x2 
+;JUMP WHILE_START_3  
+;LABEL WHILE_END_4  
+;WRITEF x2  
+str dummy "abcde"
+var n
+var x1
+var x2
+var fx
+var dfx
+var error
+var i
+push 
+push r0
+push r1
+push r2
+push r3
+jsr FUNC_main
+sys halt
+label FUNC_main
+link 0
+move 0.001 r0
+move r0 error
+sys readr x1  
+sys readr n  
+move x1 r1
+mulr x1 r1
+move r1 r2
+subr n r2
+move r2 fx
+move 2.0 r3
+move r3 r4
+mulr x1 r4
+move r4 dfx
+move fx r5
+divr dfx r5
+move x1 r6
+subr r5 r6
+move r6 x2
+move 0 r7
+move r7 i
+label  WHILE_START_1
+move 2 r8
+move r8 r8
+cmpi i r8
+jge WHILE_END_2
+move x2 r10
+move r10 x1
+move x1 r11
+mulr x1 r11
+move r11 r12
+subr n r12
+move r12 fx
+move 2.0 r13
+move r13 r14
+mulr x1 r14
+move r14 dfx
+move fx r15
+divr dfx r15
+move x1 r16
+subr r15 r16
+move r16 x2
+move 1 r17
+move i r18
+addi r17 r18
+move r18 i
+jmp  WHILE_START_1
+label  WHILE_END_2
+label  WHILE_START_3
+move x1 r19
+subr x2 r19
+move error r19
+cmpi r19 r19
+jge WHILE_END_4
+move x2 r21
+move r21 x1
+move x1 r22
+mulr x1 r22
+move r22 r23
+subr n r23
+move r23 fx
+move 2.0 r24
+move r24 r25
+mulr x1 r25
+move r25 dfx
+move fx r26
+divr dfx r26
+move x1 r27
+subr r26 r27
+move r27 x2
+jmp  WHILE_START_3
+label  WHILE_END_4
+sys writer x2  
