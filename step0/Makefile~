@@ -1,0 +1,12 @@
+
+all: team
+
+team: 
+	@echo "Team: TeamSS"
+	@echo
+	@echo Sahil Bhalla
+	@echo bhallas
+	@echo 
+	@echo Siddharth Inani
+	@echo sinani
+

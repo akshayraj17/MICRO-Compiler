@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#check usage
+if (( $# != 2 ))
+then
+    echo "usage ./runme <input file> <output file>"
+    exit 1
+fi
+
+#check source file
+if ! [[ -r $1 ]]
+then
+    echo "Error: $1 does not exist or is not readable!"
+    exit 2
+fi
+
+./Micro $1 > $2
+
+exit 0
